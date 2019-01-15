@@ -16,10 +16,11 @@ limitations under the License.
 
 :root {
    /* Modify these to change your theme colors: */
-   --primary: #09F;
-   --text: #DDD;
-   --background: #111;
-   --background-elevated: #222;
+   --primary: #CCC;
+   --text: #999;
+   --background: #222;
+   --background-elevated: #444;
+   --icon: #717274;
 
    /* These should be less important: */
    --background-hover: rgba(255, 255, 255, 0.1);
@@ -155,6 +156,7 @@ ts-jumper input[type="text"],
 
 .p-channel_sidebar__channel--selected:hover,
 .p-channel_sidebar__link--selected:hover {
+  background: var(--selected) !important;
    border: solid var(--border-dim);
    border-width: 1px 1px 1px 0;
 }
@@ -211,7 +213,9 @@ li.active[class] span,
   color: inherit !important;
 }
 
-#client_body::before, #client_body:not(.onboarding):before {
+#client_body::before,
+#client_body:not(.onboarding):before,
+#client_body:not(.onboarding):not(.feature_global_nav_layout):before {
   border-bottom: 1px solid var(--border-dim) !important;
   background: var(--background);
   box-shadow: none;
@@ -612,7 +616,8 @@ ts-mention.ts_tip:hover
 .menu .p-emoji_picker__input_container,
 .menu .p-emoji_picker__list_container,
 .menu .p-emoji_picker__heading,
-.menu .p-emoji_picker__footer {
+.menu .p-emoji_picker__footer,
+.menu .p-emoji_picker__footer--previewing {
    background: transparent;
    color: var(--text);
 }
@@ -622,8 +627,27 @@ ts-mention.ts_tip:hover
    border-bottom-width: 2px;
 }
 
+.c-menu.p-emoji_picker {
+  background-color: var(--background-elevated);
+  color: var(--text-special);
+  border-color: var(--border-bright);
+  border-width: 1px 1px 2px 1px;
+  border-style: solid;
+}
+
+.p-emoji_picker__list_container,
+.p-emoji_picker__footer,
+.p-emoji_picker__heading,
+.p-emoji_picker__input_container {
+  background: var(--background-elevated);
+}
+
+.p-emoji_picker__group_tab--active {
+  background: var(--background-hover);
+}
+
 .menu .p-emoji_picker__group_tab--active {
-   background-color: var(--background);
+   background-color: var(--background-elevated);
    color: var(--text-special);
    border-color: var(--border-bright);
    border-width: 1px 1px 2px 1px;
@@ -830,7 +854,7 @@ ts-thread .view_all_replies_container:hover {
 }
 .unread_group_header button {
    color: var(--text-special);
-},
+}
 
 
 /* scroller for threads & unreads */
@@ -981,3 +1005,438 @@ ts-jumper, ts-jumper.active {
 ts-jumper ts-jumper-container {
   box-shadow: 0 5px 20px rgba(0,0,0,1);
 }
+
+/********************************************************************************************/
+/* Begin customizations by jpdillingham                                                       */
+/********************************************************************************************/
+
+:root {
+  --primary: #61AFEF;
+  --text: #d3cdc1;
+  --background: #23272f;
+  --background-elevated: #2d3139;
+  --border-bright: #23272f;
+  --border-dim: #2d3139;
+  --scrollbar-border: #23272f;
+  --selected: #6698C8;
+}
+
+.p-channel_sidebar__channel--selected,
+.p-channel_sidebar__link--selected,
+.p-channel_sidebar__channel--selected:link,
+.p-channel_sidebar__link--selected:link,
+.p-channel_sidebar__channel--selected:visited,
+.p-channel_sidebar__link--selected:visited,
+.p-channel_sidebar__channel--selected:hover,
+.p-channel_sidebar__link--selected:hover,
+.p-channel_sidebar__channel--selected + .p-channel_sidebar__close {
+  background: var(--selected) !important;
+}
+
+.p-channel_sidebar__channel,
+.p-channel_sidebar__link {
+  border-radius: 0 !important;
+}
+
+.c-mrkdwn__code {
+  color: var(--text) !important
+}
+
+.flex_content_scroller {
+  background-color: var(--background) !important;
+}
+
+#msg_input,
+#primary_file_button {
+  border-color: var(--border-dim) !important;
+}
+
+div.c-message.c-message--light.c-message--hover {
+  color: #fff !important;
+  background-color: #282C34 !important;
+}
+
+/* channel background */
+div.c-virtual_list__scroll_container {
+  background-color: var(--background) !important;
+}
+
+/* channel details panel */
+#channel_page_scroller {
+  background-color: #282C34 !important;
+}
+
+div.c-message_attachment.c-message_attachment {
+  color: #7c7b7b !important;
+}
+
+span.c-message_attachment__pretext {
+  color: #7c7b7b !important;
+}
+
+/* message text */
+span.c-message__body,
+a.c-message__sender_link,
+span.c-message_attachment__media_trigger.c-message_attachment__media_trigger--caption,
+div.p-message_pane__foreword__description span {
+  color: #d3cdc1 !important;
+}
+
+.p-message_pane .c-message_list:not(.c-virtual_list--scrollbar),
+.p-message_pane .c-message_list.c-virtual_list--scrollbar > .c-scrollbar__hider {
+  z-index: 0;
+}
+
+pre.special_formatting {
+  background-color: #222 !important;
+  color: #8f8f8f !important;
+  border: solid;
+  border-width: 1 px !important;
+}
+
+/* @username mentions */
+a.c-member_slug.c-member_slug--link,
+button.c-mrkdwn__subteam,
+.c-member_slug--mention, .c-member_slug {
+  color: var(--primary) !important;
+  background-color: var(--background) !important;
+}
+
+.c-member_slug--mention, .c-member_slug--mention:hover {
+  color: var(--primary) !important;
+  background-color: var(--background) !important;
+}
+
+.c-member_slug--link, .c-member_slug--link:hover {
+  color: var(--primary) !important;
+  background-color: var(--background) !important;
+}
+
+/* @channel and @here */
+.c-mrkdwn__broadcast--mention, .c-mrkdwn__broadcast--mention:hover, .c-mrkdwn__highlight, .c-mrkdwn__mention, .c-mrkdwn__mention:hover, .c-mrkdwn__user_group--mention, .c-mrkdwn__user_group--mention:hover {
+  color: var(--primary) !important;
+  background-color: var(--background) !important;
+}
+
+/* @subteam mentions */
+button.c-mrkdwn__subteam {
+  color: var(--primary) !important;
+  background-color: var(--background) !important;
+}
+
+/* member name display */
+span.c-unified_member__display-name {
+  color: #cac5ba !important
+}
+
+/* day divider */
+hr.c-message_list__day_divider {
+  background: #abb2bf !important;
+}
+
+.c-message_list__day_divider__line {
+  border-top: 1px solid var(--border-dim) !important
+}
+
+/* day divider pill */
+div.c-message_list__day_divider__label__pill{
+  background: var(--border-dim) !important;
+  color: var(--primary) !important;
+}
+
+div.client_channels_list_container {
+  box-shadow: none !important;
+}
+
+.channel_page_section, #channel_page_scroller {
+  --background-elevated: var(--background) !important;
+  background: var(--background) !important
+}
+
+#details_tab .channel_page_section {
+  border-top: 1px solid var(--border-dim) !important;
+}
+
+button.c-reaction {
+  background-color: var(--background);
+  border: 1px solid var(--border-dim);
+}
+span.emoji {
+  text-shadow: none !important;
+  color: transparent !important;
+  -webkit-filter: drop-shadow( 1px  0 0 var(--background-dark))
+                  drop-shadow(-1px  0 0 var(--background-dark))
+                  drop-shadow(-0  1px 0 var(--background-dark))
+                  drop-shadow( 0 -1px 0 var(--background-bright)) !important
+}
+.emoji-sizer{
+  -webkit-filter: drop-shadow( 1px  0 0 var(--background-dark))
+  drop-shadow(-1px  0 0 var(--background-dark))
+  drop-shadow(-0  1px 0 var(--background-dark))
+  drop-shadow( 0 -1px 0 var(--background-bright)) !important
+}
+
+.tab_complete_ui, .tab_complete_ui_header {
+  background-color: #2d3139 !important
+}
+
+.c-message_list__unread_divider__separator {
+  border-color: var(--primary);
+}
+
+.c-message_list__unread_divider__label {
+  color: var(--primary);
+  background: var(--background-elevated);
+}
+
+/* greentext */
+blockquote.c-mrkdwn__quote:before {
+  background: transparent !important;
+  content: '>';
+}
+
+blockquote.c-mrkdwn__quote {
+  color: green;
+}
+
+/* mention badge */
+.p-channel_sidebar__badge, .p-channel_sidebar__banner--mentions {
+  background: #a12d3d !important;
+  border: 0px !important;
+}
+
+/* channel scrollbar */
+.c-scrollbar__bar {
+  background: var(--background-elevated);
+}
+
+/* search form */
+.search_form {
+  border: 1px solid var(--border-dim);
+}
+
+/* user time zone */
+#details_tab .conversation_details .member_info_timezone {
+  border-top: 1px solid var(--border-dim);
+  color: var(--text) !important;
+}
+
+/* directory names */
+.c-unified_member__display-name--large, .c-unified_member__title--large {
+  color: var(--text) !important;
+}
+
+/* about this conversation name/tag text */
+.c-unified_member__display-name--large, .c-unified_member__title--large {
+  color: var(--text) !important;
+}
+
+/* see all members button */
+#see_all_members {
+  border: 1px solid var(--border-dim);
+}
+
+.btn_outline::after {
+  border: 1px solid var(--border-dim);
+}
+
+/* call icon */
+.channel_calls_button .call_icon.call_window_offline {
+  color: var(--icon) !important;
+}
+
+/* thread reply bar */
+.c-message__reply_bar:hover
+{
+  background-color: var(--background-elevated) !important;
+}
+
+.c-message__reply_bar--focus .c-message__reply_bar_view_thread, .c-message__reply_bar:hover .c-message__reply_bar_view_thread {
+  opacity: 1;
+  background-color: var(--background-elevated) !important;
+}
+
+/* thread reply box */
+.inline_message_input_container .texty_legacy .inline_message_input_container.with_file_upload {
+  background-color: var(--background) !important;
+  border: 1px solid var(--border-dim) !important;
+}
+
+.inline_file_upload {
+  background-color: var(--background);
+  border-color: var(--border-dim);
+}
+
+.dense_theme #reply_container.upload_in_threads .inline_message_input_container, .dense_theme #reply_container.upload_in_threads .reply_container_info, .light_theme #reply_container.upload_in_threads .inline_message_input_container, .light_theme #reply_container.upload_in_threads .reply_container_info {
+  border-color: var(--border-dim);
+}
+
+#convo_tab .inline_message_input_container.with_file_upload .message_input {
+  background-color: var(--background);
+  margin-left: 35px;
+}
+
+/* thread reply divider */
+#convo_container .convo_flexpane_divider, #file_preview_scroller .convo_flexpane_divider {
+  border-top: 1px solid var(--border-dim);
+}
+
+/* member name hover */
+.channel_page_member_row:hover {
+  background-color: var(--selected);
+  border: 1px solid var(--border-dim);
+  border-radius: 0;
+}
+
+/* box that shows up at the top of channels when you've got unread msgs */
+.p-degraded_list__loading {
+  color: var(--text);
+  background: var(--background);
+}
+
+.p-message_pane {
+  background: var(--background);
+}
+
+.p-message_pane .c-message_list.c-virtual_list--scrollbar>.c-scrollbar__hider, .p-message_pane .c-message_list:not(.c-virtual_list--scrollbar) {
+  background: var(--background);
+}
+
+/* limited history banner */
+.p-message_pane__limited_history_foreword {
+  color: var(--text);
+  background-color: var(--background);
+  background-position: unset;
+  padding-top: 38px;
+}
+
+.c-scrollbar__hider:before {
+  box-shadow: 0 32px var(--background) !important;
+}
+
+/* code snippets */
+.c-snippet__code .CodeMirror-code>div:before {
+  border-right: 1px solid var(--border-dim);
+  background-color: var(--background-elevated);
+  color: var(--text);
+}
+
+.CodeMirror-code {
+  background-color: var(--background-elevated);
+}
+.c-file_container {
+  background: var(--background-elevated);
+}
+.c-file_container--gradient:after {
+  background: linear-gradient(180deg,hsla(0,0%,100%,0),var(--background));
+}
+
+/* slackbot snooze warning, probably others */
+.c-message--ephemeral, .c-message--sli_highlight_negative {
+  background: var(--background);
+}
+
+/* channel notification prefs */
+.channel_prefs__muting_checkbox_label:not(.subtle_silver),
+.channel_prefs_notifications_table__small_cell,
+.channel_prefs_body__section_header_title,
+.channel_prefs_notifications_table__row_title {
+  color: var(--text) !important;
+}
+
+/* message editor */
+.c-message--highlight, .c-message--highlight_yellow_bg {
+  background: var(--background);
+}
+
+.c-message__editor__input--legacy, .c-message__editor__input--legacy.focus {
+  background-color: var(--background-hover);
+}
+
+.c-message__editor__input {
+  background: var(--background-elevated);
+  border: 1px solid var(--border-bright);
+  color: var(--text);
+}
+
+/* threads */
+#threads_msgs .inline_message_input_container.with_file_upload {
+  border-color: var(--border-dim);
+  background: var(--background);
+}
+
+/* channel browser */
+#channel_browser .channel_browser_row_header {
+  color: var(--text);
+}
+
+.sk_black {
+  color: var(--text);
+}
+
+#channel_browser .channel_browser_divider {
+  color: var(--text);
+  background: var(--background-elevated);
+}
+
+#channel_browser .channel_browser_row {
+  border-top: 1px solid var(--border-dim);
+  color: var(--text);
+}
+
+#channel_browser
+#channel_list_container:not(.keyboard_active).not_scrolling
+.channel_browser_row:hover {
+  background: var(--background-hover);
+  border: 1px solid var(--border-bright);
+}
+
+/* preferences */
+.sidebar_menu_list_item {
+  color: var(--text);
+}
+
+/* channel details */
+#details_tab .feature_sli_channel_insights .channel_created_section .creator_link, #details_tab .feature_sli_channel_insights .channel_purpose_section .channel_purpose_text {
+  color: var(--text);
+}
+
+/* archives banner */
+.p-archives_banner {
+  background: var(--primary);
+  color: var(--text-bright);
+}
+
+/* message placeholder */
+#msg_input.texty_legacy .ql-placeholder {
+  color: var(--text);
+  opacity: .15 !important;
+}
+
+/* shared files */
+#client-ui .file_list_item.file_list_item--redesign {
+  border: 1px solid var(--border-dim);
+}
+
+/* shared text file preview text */
+#client-ui .file_comment_item .monospace,
+#client-ui .file_list_item .monospace,
+#client-ui .star_item ts-message .monospace,
+#files_list .file_comment_item .monospace,
+#files_list .file_list_item .monospace,
+#files_list .star_item ts-message .monospace {
+  color: var(--text);
+}
+
+/* shared file title (in channel) */
+.c-file__title {
+  color: var(--primary);
+}
+
+/* download link overlay */
+.c-file__slide--meta {
+  background: var(--background);
+}
+/********************************************************************************************/
+/* End customizations by jpdillingham                                                       */
+/********************************************************************************************/
